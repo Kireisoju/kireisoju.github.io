@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDN – Test Your Skills: CSS Grid</title>
+  <style>
+    body { font: 1.2em / 1.5 sans-serif; }
+
+    /* page chrome */
+    h1 { font-family: sans-serif; border-bottom: 3px solid #4d7298; }
+    h2 { font-family: sans-serif; background: #4d7298; color: #fff; padding: .4em .8em; border-radius: .3em; }
+    section { background: #fff; border: 1px solid #dce3ea; border-radius: .5em; padding: 1.2em 1.5em; margin: 1.5em 0; max-width: 900px; }
+    p.note { font-size: .9em; color: #555; font-style: italic; }
+
+    /* ── TASK 1 ── */
+    #task1 .grid > * {
+      background-color: #4d7298;
+      border: 2px solid #77a6b6;
+      border-radius: 0.5em;
+      color: white;
+      padding: 0.5em;
+    }
+    #task1 .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ── TASK 2 ── */
+    #task2 .grid > * {
+      border-radius: 0.5em;
+      color: white;
+      padding: 0.5em;
+    }
+    #task2 .item1 {
+      background-color: rgb(74 102 112 / 70%);
+      border: 5px solid rgb(74 102 112 / 100%);
+    }
+    #task2 .item2 {
+      background-color: rgb(214 162 173 / 70%);
+      border: 5px solid rgb(214 162 173 / 100%);
+    }
+    #task2 .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 100px 100px 100px;
+      gap: 10px;
+    }
+    #task2 .item1 {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+      z-index: 1; /* BONUS: item1 on top */
+    }
+    #task2 .item2 {
+      grid-column: 2 / 4;
+      grid-row: 2 / 4;
+    }
+
+    /* ── TASK 3 ── */
+    #task3 .grid > * {
+      background-color: #4d7298;
+      border: 2px solid #77a6b6;
+      border-radius: 0.5em;
+      color: white;
+      padding: 0.5em;
+    }
+    #task3 .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      grid-template-areas:
+        "one   one"
+        "two   three"
+        "two   four";
+    }
+    #task3 .one   { grid-area: one; }
+    #task3 .two   { grid-area: two; }
+    #task3 .three { grid-area: three; }
+    #task3 .four  { grid-area: four; }
+
+    /* ── TASK 4 ── */
+    #task4 .card {
+      display: grid;
+      grid-template-rows: 200px min-content;
+    }
+    #task4 .card > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #task4 .tags {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #task4 .tags > * {
+      background-color: #999999;
+      color: white;
+      padding: 0.2em 0.8em;
+      border-radius: 0.2em;
+      font-size: 80%;
+      margin: 5px;
+    }
+    #task4 .container {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    #task4 .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>MDN – Test Your Skills: CSS Grid</h1>
+
+<!-- TASK 1 -->
+<section id="task1">
+  <h2>Task 1 – 3-column auto-placed grid (20px gap)</h2>
+  <p class="note">Grid with three equal columns and a 20px gap; children auto-place.</p>
+  <div class="grid">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+  </div>
+</section>
+
+<!-- TASK 2 -->
+<section id="task2">
+  <h2>Task 2 – Spanning &amp; overlapping items</h2>
+  <p class="note">item1: cols 1–2, rows 1–2. item2: cols 2–3, rows 2–3 (overlaps). Bonus: item1 on top via z-index.</p>
+  <div class="grid">
+    <div class="item1">One</div>
+    <div class="item2">Two</div>
+  </div>
+</section>
+
+<!-- TASK 3 -->
+<section id="task3">
+  <h2>Task 3 – Named grid-template-areas</h2>
+  <p class="note">One spans the top row; Two spans the left column (2 rows); Three and Four fill the right.</p>
+  <div class="grid">
+    <div class="one">One</div>
+    <div class="two">Two</div>
+    <div class="three">Three</div>
+    <div class="four">Four</div>
+  </div>
+</section>
+
+<!-- TASK 4 -->
+<section id="task4">
+  <h2>Task 4 – Grid container + Flexbox tags</h2>
+  <p class="note">.container is a 3-column grid (10px gap); .tags is a flex row with wrapping and centered items.</p>
+  <div class="container">
+    <div class="card">
+      <img alt="a single red balloon"
+           src="https://mdn.github.io/shared-assets/images/examples/balloons1.jpg" />
+      <ul class="tags">
+        <li>balloon</li><li>red</li><li>sky</li><li>blue</li><li>Hot air balloon</li>
+      </ul>
+    </div>
+    <div class="card">
+      <img alt="balloons over some houses"
+           src="https://mdn.github.io/shared-assets/images/examples/balloons2.jpg" />
+      <ul class="tags">
+        <li>balloons</li><li>houses</li><li>train</li><li>harborside</li>
+      </ul>
+    </div>
+    <div class="card">
+      <img alt="close-up of balloons inflating"
+           src="https://mdn.github.io/shared-assets/images/examples/balloons3.jpg" />
+      <ul class="tags">
+        <li>balloons</li><li>inflating</li><li>green</li><li>blue</li>
+      </ul>
+    </div>
+    <div class="card">
+      <img alt="a balloon in the sun"
+           src="https://mdn.github.io/shared-assets/images/examples/balloons4.jpg" />
+      <ul class="tags">
+        <li>balloon</li><li>sun</li><li>sky</li><li>summer</li><li>bright</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
