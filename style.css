@@ -193,19 +193,7 @@ main { flex: 1; }
   position: relative;
   overflow: hidden;
 }
-.page-header::after {
-  content: attr(data-bg);
-  position: absolute;
-  right: var(--space-xl); top: 50%;
-  transform: translateY(-50%);
-  font-size: clamp(4rem, 14vw, 9rem);
-  color: rgba(139,90,60,0.06);
-  font-family: var(--font-main);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  line-height: 1;
-}
+
 .page-header-label {
   font-size: 1rem;
   letter-spacing: 0.2em;
