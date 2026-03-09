@@ -188,7 +188,7 @@ main { flex: 1; }
 
 /* ── Page header (inner pages) ── */
 .page-header {
-  padding: var(--space-xl) var(--space-xl) var(--space-md);
+  padding: var(--space-md) var(--space-xl);
   border-bottom: 3px solid var(--color-primary);
   position: relative;
   overflow: hidden;
@@ -206,6 +206,7 @@ main { flex: 1; }
   color: var(--color-primary);
   position: relative;
   z-index: 1;
+  margin-top: 0;
 }
 
 /* ── Content wrapper ── */
@@ -446,7 +447,7 @@ footer strong { color: var(--color-bg); }
   }
   .kios-image-panel { order: 1; min-height: 50vw; height: 50vw; }
 
-  .page-header { padding: var(--space-lg) var(--space-md) var(--space-md); }
+  .page-header { padding: var(--space-lg) var(--space-md) var(--space-md) var(--space-md); }
   .content { padding: var(--space-lg) var(--space-md); }
 
   .hobbies-grid { grid-template-columns: 1fr; }
@@ -468,7 +469,7 @@ footer strong { color: var(--color-bg); }
 @media (max-width: 450px) {
   .nav-brand { font-size: 1.3rem; }
   .kios-text { padding: var(--space-md) var(--space-sm); }
-  .page-header { padding: var(--space-md) var(--space-sm); }
+  .page-header { padding: var(--space-md) var(--space-sm) var(--space-md) var(--space-sm); }
   .content { padding: var(--space-md) var(--space-sm); }
   h1 { font-size: 2.4rem; }
 }
