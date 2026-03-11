@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Lato:wght@400;700&display=swap');
 
 /* ── Design System Variables (from wa6) ── */
 :root {
-  --color-primary:    #8B5A3C;
-  --color-secondary:  #2D5F5D;
-  --color-accent:     #D4A574;
-  --color-text:       #2C2C2C;
+  --color-primary:    #7A4A2E;
+  --color-secondary:  #1E4F4D;
+  --color-accent:     #B8893A;
+  --color-text:       #1A1A1A;
   --color-bg:         #F5F1E8;
-  --color-bg-dark:    #2C2C2C;
+  --color-bg-dark:    #1A1A1A;
+  --color-card-text:  #F5F1E8;
 
   --space-xs:  8px;
   --space-sm:  16px;
@@ -15,7 +16,8 @@
   --space-lg:  32px;
   --space-xl:  48px;
 
-  --font-main: 'VT323', monospace;
+  --font-display: 'VT323', monospace;
+  --font-body:    'Lato', sans-serif;
   --radius: 2px;
 }
 
@@ -24,10 +26,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-main);
+  font-family: var(--font-body);
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -35,13 +37,29 @@ body {
 }
 
 /* ── Typography ── */
-h1 { font-size: clamp(2.8rem, 7vw, 5rem);  line-height: 1.05; }
-h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; }
-h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2; }
-p, li { font-size: 1.2rem; line-height: 1.7; }
-small { font-size: 0.9rem; color: #666; }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  font-weight: 400;
+}
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+p  { font-size: 1rem;   line-height: 1.7; }
+li { font-size: 1rem;   line-height: 1.7; }
+small { font-size: 0.85rem; color: #555; }
 
-/* ── Links (design system standard) ── */
+/* ── Links ── */
 a {
   color: var(--color-secondary);
   text-decoration: underline;
@@ -71,7 +89,7 @@ nav {
 }
 
 .nav-brand {
-  font-family: var(--font-main);
+  font-family: var(--font-display);
   font-size: 1.6rem;
   color: var(--color-bg);
   text-decoration: none;
@@ -87,15 +105,15 @@ nav {
   flex-wrap: wrap;
 }
 
-/* Primary button style applied to nav links */
 .nav-links a {
-  font-family: var(--font-main);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-decoration: none;
-  padding: 5px var(--space-sm);
+  padding: 6px var(--space-sm);
   background: var(--color-primary);
-  color: var(--color-bg);
+  color: #fff;
   border: 2px solid var(--color-primary);
   border-radius: var(--radius);
   transition: background 0.15s, color 0.15s, border-color 0.15s;
@@ -105,7 +123,7 @@ nav {
   background: var(--color-bg);
   color: var(--color-primary);
 }
-.nav-links a:visited { color: var(--color-bg); }
+.nav-links a:visited { color: #fff; }
 .nav-links a:visited:hover { color: var(--color-primary); }
 .nav-links a:focus-visible {
   outline: 3px solid var(--color-accent);
@@ -114,6 +132,7 @@ nav {
 .nav-links a.active {
   background: var(--color-secondary);
   border-color: var(--color-secondary);
+  color: #fff;
 }
 .nav-links a.active:hover {
   background: var(--color-bg);
@@ -141,24 +160,31 @@ main { flex: 1; }
 }
 
 .kios-eyebrow {
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-secondary);
 }
 
-.kios-name { color: var(--color-primary); }
+.kios-name {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+}
 
 .kios-bio {
   max-width: 40ch;
   border-left: 4px solid var(--color-accent);
   padding-left: var(--space-sm);
+  color: var(--color-text);
 }
 
 .quick-facts { list-style: none; display: flex; flex-direction: column; gap: var(--space-xs); }
 .quick-facts li { display: flex; align-items: baseline; gap: var(--space-sm); }
 .quick-facts li::before {
   content: '>';
+  font-family: var(--font-display);
   color: var(--color-accent);
   flex-shrink: 0;
 }
@@ -179,11 +205,11 @@ main { flex: 1; }
 .kios-image-label {
   position: absolute;
   bottom: var(--space-sm); right: var(--space-sm);
-  font-family: var(--font-main);
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(245,241,232,0.5);
+  color: rgba(245,241,232,0.6);
 }
 
 /* ── Page header (inner pages) ── */
@@ -195,7 +221,9 @@ main { flex: 1; }
 }
 
 .page-header-label {
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-secondary);
@@ -206,16 +234,15 @@ main { flex: 1; }
   color: var(--color-primary);
   position: relative;
   z-index: 1;
-  margin-top: 0;
 }
 
 /* ── Content wrapper ── */
 .content { padding: var(--space-xl); }
 
-/* ── Card (design system card with offset shadow) ── */
+/* ── Card ── */
 .card {
-  background: white;
-  color: var(--color-text);
+  background: var(--color-primary);
+  color: #fff;
   border: 2px solid var(--color-primary);
   border-radius: var(--radius);
   padding: var(--space-lg);
@@ -227,17 +254,20 @@ main { flex: 1; }
   position: absolute;
   top: 5px; left: 5px;
   right: -5px; bottom: -5px;
-  background: var(--color-primary);
+  background: var(--color-bg-dark);
   z-index: -1;
   border-radius: var(--radius);
 }
 .card h2 {
-  color: var(--color-bg);
+  font-family: var(--font-display);
+  color: #fff;
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-xs);
   border-bottom: 2px solid var(--color-accent);
 }
-.card li { color: var(--color-text); }
+.card li {
+  color: #fff;
+}
 
 /* ── Hobby list ── */
 .hobby-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-xs); }
@@ -246,11 +276,13 @@ main { flex: 1; }
   align-items: baseline;
   gap: var(--space-sm);
   padding: var(--space-xs) 0;
-  border-bottom: 1px dashed rgba(139,90,60,0.25);
+  border-bottom: 1px dashed rgba(245,241,232,0.3);
+  font-family: var(--font-body);
 }
 .hobby-list li:last-child { border-bottom: none; }
 .hobby-list li::before {
   content: '//';
+  font-family: var(--font-display);
   color: var(--color-accent);
   flex-shrink: 0;
   font-size: 1rem;
@@ -279,9 +311,10 @@ main { flex: 1; }
 .photo-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: rgba(44,44,44,0.8);
-  color: var(--color-bg);
-  font-size: 0.9rem;
+  background: rgba(26,26,26,0.85);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: var(--space-xs) var(--space-sm);
@@ -299,11 +332,18 @@ main { flex: 1; }
   overflow: hidden;
 }
 .food-photo-wrap img {
-  width: 100%; height: 340px;
+  width: 100%;
+  height: 260px;
   object-fit: cover;
   display: block;
 }
+.food-images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
 .food-list-section h2 {
+  font-family: var(--font-display);
   color: var(--color-primary);
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-xs);
@@ -315,18 +355,20 @@ main { flex: 1; }
   align-items: center;
   justify-content: space-between;
   padding: var(--space-sm) 0;
-  border-bottom: 1px dashed rgba(139,90,60,0.3);
+  border-bottom: 1px dashed rgba(122,74,46,0.3);
   gap: var(--space-sm);
+  font-family: var(--font-body);
 }
 .food-item:last-child { border-bottom: none; }
-.food-item-name { font-size: 1.4rem; }
+.food-item-name { font-size: 1rem; font-weight: 700; color: var(--color-text); }
 .food-item-tag {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-bg);
+  color: #fff;
   background: var(--color-secondary);
-  padding: 2px var(--space-xs);
+  padding: 3px var(--space-xs);
   border-radius: var(--radius);
   white-space: nowrap;
 }
@@ -342,6 +384,8 @@ main { flex: 1; }
   margin-bottom: var(--space-md);
   border-left: 4px solid var(--color-accent);
   padding-left: var(--space-sm);
+  font-family: var(--font-body);
+  color: var(--color-text);
 }
 .contact-methods { display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-md); }
 
@@ -350,44 +394,46 @@ main { flex: 1; }
   align-items: center;
   gap: var(--space-sm);
   text-decoration: none;
-  color: var(--color-text);
+  color: #fff;
   padding: var(--space-sm) var(--space-md);
   border: 2px solid var(--color-primary);
-  background: white;
+  background: var(--color-primary);
   border-radius: var(--radius);
   position: relative;
-  z-index: 0;
-  transition: background 0.15s, color 0.15s, transform 0.15s;
+  z-index: 1;
+  transition: transform 0.15s;
 }
 .contact-method::after {
   content: '';
   position: absolute;
   top: 5px; left: 5px; right: -5px; bottom: -5px;
-  background: var(--color-primary);
+  background: var(--color-bg-dark);
   z-index: -1;
   border-radius: var(--radius);
 }
 .contact-method:hover {
-  background: var(--color-primary);
-  color: var(--color-bg);
   transform: translate(-2px, -2px);
 }
-.contact-method:visited { color: var(--color-text); }
+.contact-method:visited { color: #fff; }
 .contact-method:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
 
-.contact-method svg { width: 24px; height: 24px; fill: var(--color-primary); flex-shrink: 0; transition: fill 0.15s; }
-.contact-method:hover svg { fill: var(--color-bg); }
+.contact-method svg { width: 24px; height: 24px; fill: #fff; flex-shrink: 0; }
 
 .contact-method-info { display: flex; flex-direction: column; line-height: 1.3; }
 .contact-method-label {
-  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-secondary);
-  transition: color 0.15s;
+  color: var(--color-accent);
 }
-.contact-method:hover .contact-method-label { color: var(--color-accent); }
-.contact-method-value { font-size: 1.1rem; }
+.contact-method-value {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+}
 
 .contact-decorative {
   display: grid;
@@ -410,16 +456,17 @@ main { flex: 1; }
 /* ── Footer ── */
 footer {
   background: var(--color-bg-dark);
-  color: rgba(245,241,232,0.55);
+  color: rgba(245,241,232,0.7);
   padding: var(--space-sm) var(--space-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
   border-top: 3px solid var(--color-primary);
 }
-footer strong { color: var(--color-bg); }
+footer strong { color: #fff; }
 
 /* ── Fade-in ── */
 @keyframes fadeUp {
@@ -432,12 +479,14 @@ footer strong { color: var(--color-bg); }
 .animate.delay-3  { animation-delay: 0.3s; }
 .animate.delay-4  { animation-delay: 0.4s; }
 
-/* ── Responsive ── */
+/* ── Responsive: tablet ── */
 @media (max-width: 768px) {
+  /* Nav */
   nav { padding: var(--space-sm); flex-wrap: wrap; }
   .nav-links { gap: 4px; }
-  .nav-links a { font-size: 0.95rem; padding: 4px 10px; }
+  .nav-links a { font-size: 0.85rem; padding: 4px 10px; }
 
+  /* Home hero stacks vertically */
   .kios { grid-template-columns: 1fr; min-height: auto; }
   .kios-text {
     padding: var(--space-lg) var(--space-md);
@@ -445,31 +494,59 @@ footer strong { color: var(--color-bg); }
     border-bottom: 3px solid var(--color-primary);
     order: 2;
   }
-  .kios-image-panel { order: 1; min-height: 50vw; height: 50vw; }
+  .kios-image-panel { order: 1; height: 40vw; min-height: 200px; }
 
-  .page-header { padding: var(--space-lg) var(--space-md) var(--space-md) var(--space-md); }
+  /* Inner page headers */
+  .page-header { padding: var(--space-md); }
   .content { padding: var(--space-lg) var(--space-md); }
 
+  /* Hobbies: single column */
   .hobbies-grid { grid-template-columns: 1fr; }
   .hobbies-photo-wrap { grid-column: 1; height: 220px; }
 
+  /* Food: single column */
   .food-layout { grid-template-columns: 1fr; }
   .food-photo-wrap img { height: 220px; }
 
+  /* Contact: single column, hide decorative blocks */
   .contact-layout { grid-template-columns: 1fr; }
-  .contact-decorative {
-    grid-template-rows: none;
-    grid-template-columns: 1fr 1.5fr 0.75fr 0.5fr;
-    height: 60px;
-  }
+  .contact-decorative { display: none; }
 
   footer { padding: var(--space-sm) var(--space-md); flex-direction: column; gap: 4px; text-align: center; }
 }
 
+/* ── Responsive: mobile ~450px ── */
 @media (max-width: 450px) {
-  .nav-brand { font-size: 1.3rem; }
-  .kios-text { padding: var(--space-md) var(--space-sm); }
-  .page-header { padding: var(--space-md) var(--space-sm) var(--space-md) var(--space-sm); }
+  /* Nav: brand smaller, links wrap tightly */
+  nav { padding: var(--space-xs) var(--space-sm); gap: var(--space-xs); }
+  .nav-brand { font-size: 1.2rem; }
+  .nav-links a { font-size: 0.8rem; padding: 3px 8px; }
+
+  /* Home hero */
+  .kios-image-panel { height: 55vw; }
+  .kios-text { padding: var(--space-md) var(--space-sm); gap: var(--space-sm); }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.6rem; }
+  .kios-bio { max-width: 100%; }
+
+  /* Page headers */
+  .page-header { padding: var(--space-sm) var(--space-sm) var(--space-md); }
+
+  /* Content */
   .content { padding: var(--space-md) var(--space-sm); }
-  h1 { font-size: 2.4rem; }
+
+  /* Hobbies cards stack, full width */
+  .hobbies-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  .hobbies-photo-wrap { height: 180px; }
+  .card { padding: var(--space-md); }
+
+  /* Food images shorter on small screen */
+  .food-photo-wrap img { height: 180px; }
+  .food-images { gap: var(--space-sm); }
+
+  /* Contact: full width email/linkedin */
+  .contact-method { padding: var(--space-sm); }
+  .contact-method-value { font-size: 0.85rem; word-break: break-all; }
+
+  footer { font-size: 0.8rem; padding: var(--space-sm); }
 }
