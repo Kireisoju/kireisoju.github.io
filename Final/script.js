@@ -1,8 +1,8 @@
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
-const slider = document.getElementById('vol-slider');
-const volVal = document.getElementById('vol-val');
 const status = document.getElementById('status');
+
+let currentVolume = 50;
 
 const W = canvas.width;
 const H = canvas.height;
@@ -85,7 +85,7 @@ function draw(ball) {
     const cx = slotCenter(i);
 
     // Highlight active slot
-    if (parseInt(slider.value) === vol) {
+    if (currentVolume === vol) {
       ctx.fillStyle = 'rgba(226,75,74,0.35)';
     } else {
       ctx.fillStyle = 'transparent';
@@ -185,8 +185,7 @@ function startDrop() {
         ball.vy = 0;
         const slot = Math.min(SLOTS - 1, Math.max(0, Math.floor((ball.x - PAD_X) / slotW)));
         const vol = slotVolume(slot);
-        slider.value = vol;
-        volVal.textContent = vol + '%';
+        currentVolume = vol;
         status.textContent = 'Volume set to ' + vol + '%';
         draw(ball);
         dropping = false;
@@ -205,8 +204,7 @@ function resetBoard() {
   if (animId) cancelAnimationFrame(animId);
   dropping = false;
   ball = null;
-  slider.value = 50;
-  volVal.textContent = '50%';
+  currentVolume = 50;
   status.textContent = '';
   draw(null);
 }
@@ -220,12 +218,7 @@ document.getElementById('btn-submit').addEventListener('click', () => {
     status.textContent = 'Wait for the ball to land!';
     return;
   }
-  status.textContent = 'Submitted: ' + slider.value + '% volume';
-});
-
-slider.addEventListener('input', () => {
-  volVal.textContent = slider.value + '%';
-  if (!dropping) draw(ball);
+  status.textContent = 'Submitted: ' + currentVolume + '% volume';
 });
 
 // Initial render

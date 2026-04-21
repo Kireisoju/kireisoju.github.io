@@ -50,33 +50,6 @@ canvas#board {
   width: 340px;
 }
 
-.vol-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.vol-label {
-  font-size: 13px;
-  color: #666;
-  min-width: 52px;
-}
-
-#vol-slider {
-  flex: 1;
-  accent-color: #e24b4a;
-  cursor: pointer;
-}
-
-#vol-val {
-  font-size: 14px;
-  font-weight: 500;
-  min-width: 36px;
-  text-align: right;
-  color: #1a1a1a;
-}
-
 .btn-row {
   display: flex;
   gap: 10px;
