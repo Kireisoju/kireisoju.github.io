@@ -7,19 +7,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="app">
-    <h2 class="sr-only">Plinko volume slider — drop a ball to set the volume level</h2>
-    <div id="board-wrap">
-      <canvas id="board" width="340" height="400"></canvas>
+  <div id="wrap">
+    <h2 class="sr-only">Plinko volume picker — hover to aim, click to drop</h2>
+    <div id="vol-display">
+      <span id="vol-number">50%</span>
+      <span id="vol-label">current volume</span>
     </div>
+    <canvas id="board" width="340" height="370"></canvas>
+    <div id="hint">Move over the board to aim, click to drop</div>
     <div id="controls">
-
-      <div class="btn-row">
-        <button id="btn-drop">Drop ball</button>
+      <div class="row">
         <button id="btn-reset">Reset</button>
-        <button id="btn-submit">Submit</button>
       </div>
-      <div id="status"></div>
     </div>
   </div>
   <script src="script.js"></script>
